@@ -44,8 +44,7 @@ class FilamentSettingsPlugin implements Plugin
     {
         // Register resources
         $panel->resources([
-            HelpIssueResource::class,
-            HelpDocumentResource::class,
+
         ]);
 
         // Prepare user menu items
@@ -54,8 +53,13 @@ class FilamentSettingsPlugin implements Plugin
             Action::make('settings')
                 ->label('Settings')
                 ->icon('heroicon-o-cog-6-tooth')
-                ->url(fn () => HelpIssueResource::getUrl('index')),
+                ->url(fn () => '/settings'),
         ];
         $panel->userMenuItems($menuItems);
+    }
+
+    public function boot(Panel $panel): void
+    {
+        //
     }
 }
