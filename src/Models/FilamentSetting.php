@@ -10,5 +10,6 @@ class FilamentSetting extends Model
 
     public $table = 'filament_settings';
     protected $guarded = ['id'];
+    public $timestamps = false;
 
 }

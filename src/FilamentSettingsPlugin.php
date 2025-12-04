@@ -2,26 +2,13 @@
 
 namespace Lightworx\FilamentSettings;
 
-use Filament\Actions\Action;
 use Filament\Contracts\Plugin;
-use Filament\Facades\Filament;
-use Filament\Navigation\NavigationItem;
 use Filament\Panel;
-use Filament\Support\Concerns\EvaluatesClosures;
-use Filament\Support\Facades\FilamentView;
-use Filament\View\PanelsRenderHook;
-use Illuminate\Support\Facades\Blade;
-use Lightworx\FilamentSettings\Filament\HelpDocuments\HelpDocumentResource;
-use Lightworx\FilamentSettings\Filament\HelpSettings\HelpIssueResource;
-use Lightworx\FilamentSettings\Http\Livewire\HelpModal;
-use Lightworx\FilamentSettings\Models\HelpDocument;
-use Lightworx\FilamentSettings\Models\HelpIssue;
-use Livewire\Livewire;
+use Filament\Actions\Action;
+use Lightworx\FilamentSettings\Filament\Resources\FilamentSettingResource;
 
 class FilamentSettingsPlugin implements Plugin
 {
-    use EvaluatesClosures;
-
     public static function make(): static
     {
         return app(static::class);
@@ -31,7 +18,6 @@ class FilamentSettingsPlugin implements Plugin
     {
         /** @var static $plugin */
         $plugin = filament(app(static::class)->getId());
-
         return $plugin;
     }
 
@@ -42,20 +28,15 @@ class FilamentSettingsPlugin implements Plugin
 
     public function register(Panel $panel): void
     {
-        // Register resources
         $panel->resources([
-
+            FilamentSettingResource::class,
         ]);
-
-        // Prepare user menu items
-        $menuItems = [
-            // Static Help Settings link
+        $panel->userMenuItems([
             Action::make('settings')
                 ->label('Settings')
                 ->icon('heroicon-o-cog-6-tooth')
-                ->url(fn () => '/settings'),
-        ];
-        $panel->userMenuItems($menuItems);
+                ->url('/admin/filament-settings'),
+        ]);
     }
 
     public function boot(Panel $panel): void
