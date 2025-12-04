@@ -146,4 +146,9 @@ class FilamentSettings extends Page implements HasForms
             ->title('Settings saved successfully')
             ->send();
     }
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        return false;
+    }
 }
