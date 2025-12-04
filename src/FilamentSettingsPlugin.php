@@ -6,6 +6,7 @@ use Filament\Contracts\Plugin;
 use Filament\Panel;
 use Filament\Actions\Action;
 use Lightworx\FilamentSettings\Filament\Resources\FilamentSettingResource;
+use Lightworx\FilamentSettings\Filament\Resources\Pages\FilamentSettings;
 
 class FilamentSettingsPlugin implements Plugin
 {
@@ -31,11 +32,14 @@ class FilamentSettingsPlugin implements Plugin
         $panel->resources([
             FilamentSettingResource::class,
         ]);
+        $panel->pages([
+            FilamentSettings::class,
+        ]);
         $panel->userMenuItems([
             Action::make('settings')
                 ->label('Settings')
                 ->icon('heroicon-o-cog-6-tooth')
-                ->url('/admin/filament-settings'),
+                ->url('/admin/filament-settings/settings'),
         ]);
     }
 

@@ -14,8 +14,7 @@ class FilamentSettingsTable
     {
         return $table
             ->columns([
-                TextColumn::make('key'),
-                TextColumn::make('value'),
+                TextColumn::make('label'),
                 TextColumn::make('category')
             ])
             ->filters([

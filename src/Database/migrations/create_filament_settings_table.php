@@ -15,8 +15,10 @@ return new class () extends Migration {
         Schema::create('filament_settings', function (Blueprint $table) {
             $table->id();
             $table->string('key');
+            $table->string('label');
             $table->string('value')->nullable();
             $table->string('category');
+            $table->json('options')->nullable();
             $table->string('setting_type');
         });
     }

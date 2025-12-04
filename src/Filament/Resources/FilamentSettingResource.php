@@ -20,7 +20,7 @@ class FilamentSettingResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
-    protected static ?string $recordTitleAttribute = 'key';
+    protected static ?string $recordTitleAttribute = 'label';
 
     public static function form(Schema $schema): Schema
     {
@@ -44,7 +44,7 @@ class FilamentSettingResource extends Resource
         return [
             'index' => ListFilamentSettings::route('/'),
             'create' => CreateFilamentSetting::route('/create'),
-            'edit' => EditFilamentSetting::route('/{record}/edit'),
+            'edit' => EditFilamentSetting::route('/{record}/edit')
         ];
     }
 
