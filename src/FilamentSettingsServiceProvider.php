@@ -2,10 +2,7 @@
 
 namespace Lightworx\FilamentSettings;
 
-use Filament\Facades\Filament;
-use Filament\Panel;
 use Illuminate\Support\ServiceProvider;
-use Lightworx\FilamentSettings\Filament\Resources\Pages\FilamentSettings;
 
 class FilamentSettingsServiceProvider extends ServiceProvider
 {
