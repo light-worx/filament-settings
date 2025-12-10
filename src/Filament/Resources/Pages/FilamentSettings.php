@@ -97,7 +97,8 @@ class FilamentSettings extends Page implements HasForms
 
             case 'password':
                 return TextInput::make($setting->key)
-                    ->label($setting->label);
+                    ->label($setting->label)
+                    ->password();
 
             case 'textarea':
                 return Textarea::make($setting->key)
