@@ -120,6 +120,9 @@ class FilamentSettings extends Page implements HasForms
     protected function parseOptions($options)
     {
         if (is_array($options)) {
+                if (array_is_list($options)) {
+                    $options = array_combine($options, $options);
+            }
             return $options;
         }
         if (!$options) {
