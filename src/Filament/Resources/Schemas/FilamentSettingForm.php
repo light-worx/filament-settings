@@ -22,10 +22,11 @@ class FilamentSettingForm
                     ->default('text')
                     ->options([
                         'text' => 'Text',
+                        'password' => 'Password',
                         'textarea' => 'Paragraph',
                         'number' => 'Number',
                         'boolean' => 'Toggle',
-                        'select' => 'List'
+                        'list' => 'List'
                     ]),
                 Textarea::make('options'),
                 TextInput::make('category')->required()

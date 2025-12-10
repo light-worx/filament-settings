@@ -95,6 +95,10 @@ class FilamentSettings extends Page implements HasForms
                 return TextInput::make($setting->key)
                     ->label($setting->label);
 
+            case 'password':
+                return TextInput::make($setting->key)
+                    ->label($setting->label);
+
             case 'textarea':
                 return Textarea::make($setting->key)
                     ->label($setting->label);
@@ -103,7 +107,7 @@ class FilamentSettings extends Page implements HasForms
                 return Toggle::make($setting->key)
                     ->label($setting->label);
 
-            case 'select':
+            case 'list':
                 return Select::make($setting->key)
                     ->label($setting->label)
                     ->options($this->parseOptions($setting->options));
