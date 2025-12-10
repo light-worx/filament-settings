@@ -1,3 +1,3 @@
 
 
-Add FilamentSettingsPlugin::make() to your AdminServiceProvider
+Add FilamentSettingsPlugin::make() to your AdminPanelProvider
