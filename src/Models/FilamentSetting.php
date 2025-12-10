@@ -12,4 +12,8 @@ class FilamentSetting extends Model
     protected $guarded = ['id'];
     public $timestamps = false;
 
+    protected $casts = [
+        'options' => 'array',
+    ];
+
 }
