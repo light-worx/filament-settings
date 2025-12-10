@@ -119,19 +119,24 @@ class FilamentSettings extends Page implements HasForms
 
     protected function parseOptions($options)
     {
-        if (!$options) return [];
-
-        // Try JSON first
-        $decoded = json_decode($options, true);
-        if (is_array($decoded)) {
-            return $decoded;
+        if (is_array($options)) {
+            return $options;
         }
-
-        // Fallback to comma-separated string
-        return collect(explode(',', $options))
-            ->mapWithKeys(fn($item) => [trim($item) => trim($item)])
-            ->toArray();
+        if (!$options) {
+            return [];
+        }
+        if (is_string($options)) {
+            $decoded = json_decode($options, true);
+            if (is_array($decoded)) {
+                return $decoded;
+            }
+            return collect(explode(',', $options))
+                ->mapWithKeys(fn ($item) => [trim($item) => trim($item)])
+                ->toArray();
+        }
+        return [];
     }
+
 
     public function save(): void
     {
