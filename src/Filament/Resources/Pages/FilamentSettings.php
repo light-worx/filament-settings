@@ -23,6 +23,8 @@ class FilamentSettings extends Page implements HasForms
 
     protected static ?string $slug = 'filament-settings/settings';
 
+    protected static ?string $title = 'Settings';
+
     public ?array $data = [];
 
     public function mount(): void
