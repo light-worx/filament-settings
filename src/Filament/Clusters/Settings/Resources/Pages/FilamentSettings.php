@@ -14,6 +14,7 @@ use Filament\Forms\Contracts\HasForms;
 use Filament\Notifications\Notification;
 use Filament\Schemas\Components\Tabs;
 use Filament\Schemas\Components\Tabs\Tab;
+use Lightworx\FilamentSettings\Filament\Clusters\SettingsCluster;
 use Lightworx\FilamentSettings\Models\FilamentSetting;
 
 class FilamentSettings extends Page implements HasForms
@@ -22,9 +23,11 @@ class FilamentSettings extends Page implements HasForms
 
     protected string $view = 'filament-settings::filament.resources.filament-setting-resource.pages.filament-settings';
 
-    protected static ?string $slug = 'filament-settings/settings';
+    protected static ?string $slug = 'general';
 
     protected static ?string $title = 'Settings';
+
+    protected static ?string $cluster = SettingsCluster::class;
 
     public ?array $data = [];
 
