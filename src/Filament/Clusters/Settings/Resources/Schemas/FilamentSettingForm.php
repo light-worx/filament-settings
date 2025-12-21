@@ -1,6 +1,6 @@
 <?php
 
-namespace Lightworx\FilamentSettings\Filament\Resources\Schemas;
+namespace Lightworx\FilamentSettings\Filament\Clusters\Settings\Resources\Schemas;
 
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;

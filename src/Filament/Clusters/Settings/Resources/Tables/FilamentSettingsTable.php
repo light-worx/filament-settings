@@ -1,6 +1,6 @@
 <?php
 
-namespace Lightworx\FilamentSettings\Filament\Resources\Tables;
+namespace Lightworx\FilamentSettings\Filament\Clusters\Settings\Resources\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;

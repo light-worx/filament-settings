@@ -5,8 +5,8 @@ namespace Lightworx\FilamentSettings;
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 use Filament\Actions\Action;
-use Lightworx\FilamentSettings\Filament\Resources\FilamentSettingResource;
-use Lightworx\FilamentSettings\Filament\Resources\Pages\FilamentSettings;
+use Lightworx\FilamentSettings\Filament\Clusters\Settings\Resources\FilamentSettingResource;
+use Lightworx\FilamentSettings\Filament\Clusters\Settings\Resources\Pages\FilamentSettings;
 
 class FilamentSettingsPlugin implements Plugin
 {

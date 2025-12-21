@@ -1,8 +1,8 @@
 <?php
 
-namespace Lightworx\FilamentSettings\Filament\Resources\Pages;
+namespace Lightworx\FilamentSettings\Filament\Clusters\Settings\Resources\Pages;
 
-use Lightworx\FilamentSettings\Filament\Resources\FilamentSettingResource;
+use Lightworx\FilamentSettings\Filament\Clusters\Settings\Resources\FilamentSettingResource;
 use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
 

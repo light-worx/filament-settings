@@ -1,18 +1,19 @@
 <?php
 
-namespace Lightworx\FilamentSettings\Filament\Resources;
+namespace Lightworx\FilamentSettings\Filament\Clusters\Settings\Resources;
 
-use Lightworx\FilamentSettings\Filament\Resources\Pages\CreateFilamentSetting;
-use Lightworx\FilamentSettings\Filament\Resources\Pages\EditFilamentSetting;
-use Lightworx\FilamentSettings\Filament\Resources\Pages\ListFilamentSettings;
-use Lightworx\FilamentSettings\Filament\Resources\Schemas\FilamentSettingForm;
-use Lightworx\FilamentSettings\Filament\Resources\Tables\FilamentSettingsTable;
+use Lightworx\FilamentSettings\Filament\Clusters\Settings\Resources\Pages\CreateFilamentSetting;
+use Lightworx\FilamentSettings\Filament\Clusters\Settings\Resources\Pages\EditFilamentSetting;
+use Lightworx\FilamentSettings\Filament\Clusters\Settings\Resources\Pages\ListFilamentSettings;
+use Lightworx\FilamentSettings\Filament\Clusters\Settings\Resources\Schemas\FilamentSettingForm;
+use Lightworx\FilamentSettings\Filament\Clusters\Settings\Resources\Tables\FilamentSettingsTable;
 use Lightworx\FilamentSettings\Models\FilamentSetting;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use Lightworx\FilamentSettings\Filament\Clusters\SettingsCluster;
 
 class FilamentSettingResource extends Resource
 {
@@ -21,6 +22,8 @@ class FilamentSettingResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     protected static ?string $recordTitleAttribute = 'label';
+
+    protected static ?string $cluster = SettingsCluster::class;
 
     public static function form(Schema $schema): Schema
     {

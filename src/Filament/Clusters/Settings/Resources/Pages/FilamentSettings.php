@@ -1,6 +1,6 @@
 <?php
 
-namespace Lightworx\FilamentSettings\Filament\Resources\Pages;
+namespace Lightworx\FilamentSettings\Filament\Clusters\Settings\Resources\Pages;
 
 use Filament\Actions\Action;
 use Filament\Forms;
