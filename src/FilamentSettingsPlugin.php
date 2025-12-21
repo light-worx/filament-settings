@@ -7,6 +7,7 @@ use Filament\Panel;
 use Filament\Actions\Action;
 use Lightworx\FilamentSettings\Filament\Clusters\Settings\Resources\FilamentSettingResource;
 use Lightworx\FilamentSettings\Filament\Clusters\Settings\Resources\Pages\FilamentSettings;
+use Lightworx\FilamentSettings\Filament\Clusters\Settings\Resources\Pages\SettingsHub;
 
 class FilamentSettingsPlugin implements Plugin
 {
@@ -34,6 +35,7 @@ class FilamentSettingsPlugin implements Plugin
         ]);
         $panel->pages([
             FilamentSettings::class,
+            SettingsHub::class,
         ]);
         $panel->userMenuItems([
             Action::make('settings')
