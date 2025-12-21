@@ -114,7 +114,7 @@ class FilamentSettings extends Page implements HasForms
                     ->label($setting->label)
                     ->options($this->parseOptions($setting->options));
 
-            case 'tags':
+            case 'keyvalue':
                 return KeyValue::make($setting->key)
                     ->label($setting->label);
 
