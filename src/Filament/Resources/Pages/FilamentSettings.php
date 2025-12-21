@@ -4,6 +4,7 @@ namespace Lightworx\FilamentSettings\Filament\Resources\Pages;
 
 use Filament\Actions\Action;
 use Filament\Forms;
+use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Toggle;
@@ -112,6 +113,10 @@ class FilamentSettings extends Page implements HasForms
                 return Select::make($setting->key)
                     ->label($setting->label)
                     ->options($this->parseOptions($setting->options));
+
+            case 'tags':
+                return KeyValue::make($setting->key)
+                    ->label($setting->label);
 
             case 'number':
                 return TextInput::make($setting->key)

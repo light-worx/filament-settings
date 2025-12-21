@@ -26,7 +26,8 @@ class FilamentSettingForm
                         'textarea' => 'Paragraph',
                         'number' => 'Number',
                         'boolean' => 'Toggle',
-                        'list' => 'List'
+                        'list' => 'List',
+                        'tags' => 'Tags'
                     ]),
                 Textarea::make('options'),
                 TextInput::make('category')->required()
