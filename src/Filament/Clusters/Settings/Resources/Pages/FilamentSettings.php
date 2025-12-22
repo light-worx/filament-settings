@@ -2,6 +2,7 @@
 
 namespace Lightworx\FilamentSettings\Filament\Clusters\Settings\Resources\Pages;
 
+use BackedEnum;
 use Filament\Actions\Action;
 use Filament\Forms;
 use Filament\Forms\Components\KeyValue;
@@ -14,6 +15,7 @@ use Filament\Forms\Contracts\HasForms;
 use Filament\Notifications\Notification;
 use Filament\Schemas\Components\Tabs;
 use Filament\Schemas\Components\Tabs\Tab;
+use Filament\Support\Icons\Heroicon;
 use Lightworx\FilamentSettings\Filament\Clusters\SettingsCluster;
 use Lightworx\FilamentSettings\Models\FilamentSetting;
 
@@ -28,6 +30,8 @@ class FilamentSettings extends Page implements HasForms
     protected static ?string $title = 'Settings';
 
     protected static ?string $cluster = SettingsCluster::class;
+
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedCog6Tooth;
 
     public ?array $data = [];
 
