@@ -170,8 +170,4 @@ class FilamentSettings extends Page implements HasForms
             ->send();
     }
 
-    public static function shouldRegisterNavigation(): bool
-    {
-        return false;
-    }
 }
