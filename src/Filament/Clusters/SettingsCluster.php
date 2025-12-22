@@ -15,4 +15,9 @@ class SettingsCluster extends Cluster
     protected static string|UnitEnum|null $navigationGroup = 'Administration';
     protected static SubNavigationPosition|null $subNavigationPosition = SubNavigationPosition::Top;
     protected static ?string $slug = 'settings';
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        return false;
+    }
 }
