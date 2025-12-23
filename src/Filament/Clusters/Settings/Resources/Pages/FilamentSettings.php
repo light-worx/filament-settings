@@ -62,7 +62,7 @@ class FilamentSettings extends Page implements HasForms
 
     public static function canAccess(): bool
     {
-        return Filament::auth()->user()?->can('update', FilamentSetting::class) ?? false;
+        return Filament::auth()->user()->can('Update:FilamentSetting');
     }
 
     protected function getFormSchema(): array

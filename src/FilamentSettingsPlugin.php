@@ -40,7 +40,6 @@ class FilamentSettingsPlugin implements Plugin
         ]);
         $panel->userMenuItems([
             Action::make('settings')
-                ->hidden(fn (): bool => ! auth()->user()->can('Update', FilamentSetting::class))
                 ->label('Settings')
                 ->icon('heroicon-o-cog-6-tooth')
                 ->url(fn (): string => FilamentSettings::getUrl()),
