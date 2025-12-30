@@ -17,6 +17,7 @@
     ],
     "require": {
         "php": "^8.3",
+        "bezhansalleh/filament-shield": "^4.0",
         "filament/filament": "^4.0"
     },
     "require-dev": {
