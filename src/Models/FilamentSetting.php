@@ -14,6 +14,7 @@ class FilamentSetting extends Model
 
     protected $casts = [
         'options' => 'array',
+        'value' => 'json'
     ];
 
 }
