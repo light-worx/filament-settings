@@ -11,6 +11,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TagsInput;
 use Filament\Pages\Page;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Notifications\Notification;
@@ -135,6 +136,10 @@ class FilamentSettings extends Page implements HasForms
                 return TextInput::make($setting->key)
                     ->label($setting->label)
                     ->numeric();
+
+            case 'tags':
+                return TagsInput::make($setting->key)
+                    ->label($setting->label);
 
             default:
                 return TextInput::make($setting->key)

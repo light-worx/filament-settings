@@ -27,6 +27,7 @@ class FilamentSettingForm
                         'number' => 'Number',
                         'boolean' => 'Toggle',
                         'list' => 'List',
+                        'tags' => 'Tags',
                         'keyvalue' => 'Key / Value'
                     ]),
                 Textarea::make('options'),
