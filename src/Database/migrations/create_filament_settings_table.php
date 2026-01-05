@@ -16,7 +16,7 @@ return new class () extends Migration {
             $table->id();
             $table->string('key');
             $table->string('label');
-            $table->string('value')->nullable();
+            $table->text('value')->nullable();
             $table->string('category');
             $table->json('options')->nullable();
             $table->string('setting_type');
