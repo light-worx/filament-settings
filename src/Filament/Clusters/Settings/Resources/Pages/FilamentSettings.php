@@ -51,6 +51,10 @@ class FilamentSettings extends Page implements HasForms
     {
         return [
             Action::make('manage')
+                ->label('Edit settings')
+                ->icon('heroicon-o-pen')
+                ->url('/admin/settings/filament-settings'),
+            Action::make('manage')
                 ->label('Add new setting')
                 ->icon('heroicon-o-plus')
                 ->url('/admin/settings/filament-settings/create'),
