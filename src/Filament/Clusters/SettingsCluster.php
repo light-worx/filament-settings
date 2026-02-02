@@ -12,7 +12,6 @@ class SettingsCluster extends Cluster
 {
     protected static ?string $navigationLabel = 'Settings';
     protected static string|BackedEnum|null $navigationIcon = Heroicon::Cog6Tooth;
-    protected static string|UnitEnum|null $navigationGroup = 'Administration';
     protected static SubNavigationPosition|null $subNavigationPosition = SubNavigationPosition::Top;
     protected static ?string $slug = 'settings';
 
