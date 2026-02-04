@@ -53,6 +53,6 @@ class FilamentSettingResource extends Resource
 
     public static function shouldRegisterNavigation(): bool
     {
-        return true;
+        return false;
     }
 }
