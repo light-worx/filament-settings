@@ -43,22 +43,15 @@ class FilamentSettingsPlugin implements Plugin
             Action::make('settings')
                 ->label('Settings')
                 ->icon('heroicon-o-cog-6-tooth')
-                //->url(fn () => FilamentSettingResource::getUrl())
                 ->url('/admin/settings/general')
                 ->visible(function () {
                     $user = auth()->user();
 
                     if (! $user) {
                         return false;
+                    } elseif ($user->id == 1) {
+                        return true;
                     }
-
-                    // If a policy exists, enforce it
-                    if (Gate::getPolicyFor(FilamentSetting::class)) {
-                        return $user->can('update', FilamentSetting::class);
-                    }
-
-                    // No policy exists → single-user site → allow
-                    return true;
                 }),
         ]);
     }
