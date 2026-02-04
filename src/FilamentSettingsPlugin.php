@@ -43,7 +43,8 @@ class FilamentSettingsPlugin implements Plugin
             Action::make('settings')
                 ->label('Settings')
                 ->icon('heroicon-o-cog-6-tooth')
-                ->url(fn () => FilamentSettingResource::getUrl())
+                //->url(fn () => FilamentSettingResource::getUrl())
+                ->url('/admin/settings/general')
                 ->visible(function () {
                     $user = auth()->user();
 
