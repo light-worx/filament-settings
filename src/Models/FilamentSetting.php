@@ -25,6 +25,15 @@ class FilamentSetting extends Model
             return $value;
         }
 
+        if ($this->setting_type === 'boolean') {
+            // Normalize common string representations
+            if (is_string($value)) {
+                return filter_var($value, FILTER_VALIDATE_BOOLEAN);
+            }
+
+            return (bool) $value;
+        }
+
         // Check if the string is valid JSON (starts with [ or {)
         if (is_string($value) && (str_starts_with($value, '[') || str_starts_with($value, '{'))) {
             $decoded = json_decode($value, true);
