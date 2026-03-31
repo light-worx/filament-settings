@@ -61,7 +61,10 @@ class FilamentSettings extends Page implements HasForms
             Action::make('save')
                 ->label('Save')
                 ->icon('heroicon-o-check')
-                ->action('save')
+                ->action(function ($livewire) {
+                    $livewire->save();
+                    return redirect(request()->header('Referer'));
+                })
         ];
     }
 
