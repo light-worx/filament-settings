@@ -148,7 +148,9 @@ class FilamentSettings extends Page implements HasForms
 
             case 'tags':
                 return TagsInput::make($setting->key)
-                    ->label($setting->label);
+                    ->label($setting->label)
+                    ->default([])
+                    ->formatStateUsing(fn ($state) => is_array($state) ? $state : []);
 
             default:
                 return TextInput::make($setting->key)
