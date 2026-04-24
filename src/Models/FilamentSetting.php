@@ -21,16 +21,12 @@ class FilamentSetting extends Model
      */
     public function getValueAttribute($value)
     {
-        // Handle empty values FIRST, but type-aware
-        if ($value === null || $value === '') {
-            return match ($this->setting_type) {
-                'tags', 'key_value', 'array' => [],
-                'boolean' => false,
-                default => $value,
-            };
+        if (empty($value)) {
+            return $value;
         }
 
         if ($this->setting_type === 'boolean') {
+            // Normalize common string representations
             if (is_string($value)) {
                 return filter_var($value, FILTER_VALIDATE_BOOLEAN);
             }
@@ -38,12 +34,10 @@ class FilamentSetting extends Model
             return (bool) $value;
         }
 
-        if (
-            is_string($value) &&
-            (str_starts_with($value, '[') || str_starts_with($value, '{'))
-        ) {
+        // Check if the string is valid JSON (starts with [ or {)
+        if (is_string($value) && (str_starts_with($value, '[') || str_starts_with($value, '{'))) {
             $decoded = json_decode($value, true);
-
+            
             if (json_last_error() === JSON_ERROR_NONE) {
                 return $decoded;
             }
