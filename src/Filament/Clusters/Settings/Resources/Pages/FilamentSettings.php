@@ -41,7 +41,9 @@ class FilamentSettings extends Page implements HasForms
     {
         // Load all settings and fill form with their values
         $formData = FilamentSetting::all()
-            ->pluck('value', 'key')
+            ->mapWithKeys(fn ($setting) => [
+                $setting->key => $setting->value, // accessor is used here
+            ])
             ->toArray();
 
         $this->form->fill($formData);
