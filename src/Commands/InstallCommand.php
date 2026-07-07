@@ -28,6 +28,13 @@ class InstallCommand extends Command
     {
         $this->comment('Publishing Package Configuration...');
         $this->callSilent('migrate');
+
+        if (\Lightworx\FilamentSettings\Support\PermissionInstaller::ensureExists()) {
+            $this->info('Created the "access_settings" permission.');
+        } else {
+            $this->comment('Skipped permission creation — spatie/laravel-permission not detected.');
+        }
+
         $this->info('Filament Settings was installed successfully.');
         return 0;
     }

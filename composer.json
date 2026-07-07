@@ -20,6 +20,10 @@
         "filament/filament": "^4.0|^5.0",
         "stechstudio/filament-impersonate": "^4.0|^5.0"
     },
+    "suggest": {
+        "bezhansalleh/filament-shield": "Lets you grant non-super-admin roles permission-based access to the Settings page.",
+        "spatie/laravel-permission": "Required for the plugin to auto-create the access_settings permission."
+    },
     "require-dev": {
         "laravel/pint": "^1.13.1",
         "nunomaduro/collision": "^7.8.1|^8.0",
