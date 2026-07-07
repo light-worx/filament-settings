@@ -9,6 +9,12 @@ use Throwable;
 
 class FilamentSettingsServiceProvider extends ServiceProvider
 {
+    protected array $skipForCommands = [
+        'migrate', 'migrate:fresh', 'migrate:rollback', 'migrate:reset',
+        'migrate:refresh', 'db:seed', 'package:discover', 'vendor:publish',
+        'config:cache', 'config:clear',
+    ];
+
     public function boot(): void
     {
         $this->mergeConfigFrom(__DIR__ . '/Config/filament-settings.php', 'filament-settings');
