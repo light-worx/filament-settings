@@ -44,15 +44,7 @@ class FilamentSettingsPlugin implements Plugin
                 ->label('Settings')
                 ->icon('heroicon-o-cog-6-tooth')
                 ->url('/admin/settings/general')
-                ->visible(function () {
-                    $user = auth()->user();
-
-                    if (! $user) {
-                        return false;
-                    } elseif ($user->id == 1) {
-                        return true;
-                    }
-                }),
+                ->visible(fn () => (bool) auth()->user()?->can('access_settings')),
         ]);
     }
 

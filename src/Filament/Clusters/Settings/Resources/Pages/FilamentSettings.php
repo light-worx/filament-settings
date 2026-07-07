@@ -4,7 +4,6 @@ namespace Lightworx\FilamentSettings\Filament\Clusters\Settings\Resources\Pages;
 
 use BackedEnum;
 use Filament\Actions\Action;
-use Filament\Facades\Filament;
 use Filament\Forms;
 use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Components\TextInput;
@@ -72,7 +71,7 @@ class FilamentSettings extends Page implements HasForms
 
     public static function canAccess(): bool
     {
-        return Filament::auth()->user()->id==1;
+        return (bool) auth()->user()?->can('access_settings');
     }
 
     protected function getFormSchema(): array

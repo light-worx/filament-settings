@@ -55,4 +55,24 @@ class FilamentSettingResource extends Resource
     {
         return false;
     }
+
+    public static function canViewAny(): bool
+    {
+        return (bool) auth()->user()?->can('access_settings');
+    }
+
+    public static function canCreate(): bool
+    {
+        return (bool) auth()->user()?->can('access_settings');
+    }
+
+    public static function canEdit($record): bool
+    {
+        return (bool) auth()->user()?->can('access_settings');
+    }
+
+    public static function canDelete($record): bool
+    {
+        return (bool) auth()->user()?->can('access_settings');
+    }
 }
