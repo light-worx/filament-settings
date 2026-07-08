@@ -6,6 +6,7 @@ use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Schema;
 
 class FilamentSettingForm
@@ -50,30 +51,51 @@ class FilamentSettingForm
                             }
                         };
                     })
-                    ->visible(fn (?string $setting_type) => $setting_type === 'model'),
+                    ->visible(function (Get $get){
+                        $setting_type = $get('setting_type');
+                        return $setting_type === 'model';
+                    }),
 
                 TextInput::make('options.label_field')
                     ->label('Label field')
                     ->default('name')
-                    ->required(fn (?string $setting_type) => $setting_type === 'model')
-                    ->visible(fn (?string $setting_type) => $setting_type === 'model'),
+                    ->required(function (Get $get){
+                        $setting_type = $get('setting_type');
+                        return $setting_type === 'model';
+                    })
+                    ->visible(function (Get $get){
+                        $setting_type = $get('setting_type');
+                        return $setting_type === 'model';
+                    }),
 
                 TextInput::make('options.value_field')
                     ->label('Value field')
                     ->default('id')
-                    ->required(fn (?string $setting_type) => $setting_type === 'model')
-                    ->visible(fn (?string $setting_type) => $setting_type === 'model'),
+                    ->required(function (Get $get){
+                        $setting_type = $get('setting_type');
+                        return $setting_type === 'model';
+                    })
+                    ->visible(function (Get $get){
+                        $setting_type = $get('setting_type');
+                        return $setting_type === 'model';
+                    }),
 
                 KeyValue::make('options.where')
                     ->label('Filter (equality only)')
                     ->helperText('e.g. active => 1. For anything more complex, use a scope below instead.')
-                    ->visible(fn (?string $setting_type) => $setting_type === 'model'),
+                    ->visible(function (Get $get){
+                        $setting_type = $get('setting_type');
+                        return $setting_type === 'model';
+                    }),
 
                 TextInput::make('options.scope')
                     ->label('Query scope (optional)')
                     ->placeholder('active')
                     ->helperText('Name of a local scope on the model, e.g. "active" calls Model::active().')
-                    ->visible(fn (?string $setting_type) => $setting_type === 'model'),
+                    ->visible(function (Get $get){
+                        $setting_type = $get('setting_type');
+                        return $setting_type === 'model';
+                    }),
 
                 TextInput::make('category')->required()
                     ->default('General'),
