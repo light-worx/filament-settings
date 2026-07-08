@@ -5,11 +5,10 @@ namespace Lightworx\FilamentSettings;
 use Filament\Contracts\Plugin;
 use Filament\Panel;
 use Filament\Actions\Action;
-use Illuminate\Support\Facades\Gate;
+use Filament\Facades\Filament;
 use Lightworx\FilamentSettings\Filament\Clusters\Settings\Resources\FilamentSettingResource;
 use Lightworx\FilamentSettings\Filament\Clusters\Settings\Resources\Pages\FilamentSettings;
 use Lightworx\FilamentSettings\Filament\Clusters\SettingsCluster;
-use Lightworx\FilamentSettings\Models\FilamentSetting;
 
 class FilamentSettingsPlugin implements Plugin
 {
@@ -44,7 +43,7 @@ class FilamentSettingsPlugin implements Plugin
                 ->label('Settings')
                 ->icon('heroicon-o-cog-6-tooth')
                 ->url('/admin/settings/general')
-                ->visible(fn () => (bool) auth()->user()?->can('access_settings')),
+                ->visible(fn () => (bool) Filament::auth()->user()?->can(config('filament-settings.permission_name', 'access_settings'))),
         ]);
     }
 

@@ -71,7 +71,7 @@ class FilamentSettings extends Page implements HasForms
 
     public static function canAccess(): bool
     {
-        return (bool) auth()->user()?->can('access_settings');
+        return (bool) auth()->user()?->can(config('filament-settings.permission_name', 'access_settings'));
     }
 
     protected function getFormSchema(): array
