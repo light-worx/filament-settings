@@ -26,8 +26,8 @@ if (! function_exists('setting')) {
             $config['value'] = $default;
         }
 
-        // Handle options: only keep it if setting_type == 'list'
-        if ($config['setting_type'] !== 'list') {
+        // Handle options: only keep it if setting_type supports options
+        if (! in_array($config['setting_type'], ['list', 'model'], true)) {
             $config['options'] = null;
         }
 

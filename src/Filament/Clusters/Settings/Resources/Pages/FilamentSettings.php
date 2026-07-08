@@ -151,6 +151,9 @@ class FilamentSettings extends Page implements HasForms
                     ->default([])
                     ->formatStateUsing(fn ($state) => is_array($state) ? $state : []);
 
+            case 'model':
+                return $this->createModelField($setting);
+
             default:
                 return TextInput::make($setting->key)
                     ->label($setting->label);
@@ -193,6 +196,39 @@ class FilamentSettings extends Page implements HasForms
             ->success()
             ->title('Settings saved successfully')
             ->send();
+    }
+
+    protected function createModelField(FilamentSetting $setting)
+    {
+        $config = is_array($setting->options) ? $setting->options : [];
+
+        $modelClass = $config['model'] ?? null;
+        $labelField = $config['label_field'] ?? 'name';
+        $valueField = $config['value_field'] ?? 'id';
+        $where = $config['where'] ?? [];
+        $scope = $config['scope'] ?? null;
+
+        return Select::make($setting->key)
+            ->label($setting->label)
+            ->searchable()
+            ->preload()
+            ->options(function () use ($modelClass, $labelField, $valueField, $where, $scope) {
+                if (! $modelClass || ! class_exists($modelClass) || ! is_subclass_of($modelClass, Model::class)) {
+                    return [];
+                }
+
+                $query = $modelClass::query();
+
+                foreach ((array) $where as $column => $value) {
+                    $query->where($column, $value);
+                }
+
+                if ($scope && method_exists($modelClass, 'scope' . ucfirst($scope))) {
+                    $query->{$scope}();
+                }
+
+                return $query->pluck($labelField, $valueField)->toArray();
+            });
     }
 
 }
