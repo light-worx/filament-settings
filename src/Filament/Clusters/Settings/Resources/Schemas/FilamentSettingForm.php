@@ -37,13 +37,13 @@ class FilamentSettingForm
 
                 Textarea::make('options')
                     ->helperText('Comma-separated, or a JSON object of value => label.')
-                    ->visible(fn (?string $setting_type) => $setting_type === 'list'),
+                    ->visible(fn (Get $get) => $get('setting_type') === 'list'),
 
-                TextInput::make('options.model')
+                TextInput::make('model_class')
                     ->label('Model class')
                     ->placeholder('App\\Models\\Rubric')
                     ->helperText('Fully-qualified Eloquent model class name.')
-                    ->required(fn (?string $setting_type) => $setting_type === 'model')
+                    ->required(fn (Get $get) => $get('setting_type') === 'model')
                     ->rule(function () {
                         return function (string $attribute, $value, $fail) {
                             if (! class_exists($value) || ! is_subclass_of($value, \Illuminate\Database\Eloquent\Model::class)) {
@@ -51,51 +51,30 @@ class FilamentSettingForm
                             }
                         };
                     })
-                    ->visible(function (Get $get){
-                        $setting_type = $get('setting_type');
-                        return $setting_type === 'model';
-                    }),
+                    ->visible(fn (Get $get) => $get('setting_type') === 'model'),
 
-                TextInput::make('options.label_field')
+                TextInput::make('label_field')
                     ->label('Label field')
                     ->default('name')
-                    ->required(function (Get $get){
-                        $setting_type = $get('setting_type');
-                        return $setting_type === 'model';
-                    })
-                    ->visible(function (Get $get){
-                        $setting_type = $get('setting_type');
-                        return $setting_type === 'model';
-                    }),
+                    ->required(fn (Get $get) => $get('setting_type') === 'model')
+                    ->visible(fn (Get $get) => $get('setting_type') === 'model'),
 
-                TextInput::make('options.value_field')
+                TextInput::make('value_field')
                     ->label('Value field')
                     ->default('id')
-                    ->required(function (Get $get){
-                        $setting_type = $get('setting_type');
-                        return $setting_type === 'model';
-                    })
-                    ->visible(function (Get $get){
-                        $setting_type = $get('setting_type');
-                        return $setting_type === 'model';
-                    }),
+                    ->required(fn (Get $get) => $get('setting_type') === 'model')
+                    ->visible(fn (Get $get) => $get('setting_type') === 'model'),
 
-                KeyValue::make('options.where')
+                KeyValue::make('where_filter')
                     ->label('Filter (equality only)')
                     ->helperText('e.g. active => 1. For anything more complex, use a scope below instead.')
-                    ->visible(function (Get $get){
-                        $setting_type = $get('setting_type');
-                        return $setting_type === 'model';
-                    }),
+                    ->visible(fn (Get $get) => $get('setting_type') === 'model'),
 
-                TextInput::make('options.scope')
+                TextInput::make('query_scope')
                     ->label('Query scope (optional)')
                     ->placeholder('active')
                     ->helperText('Name of a local scope on the model, e.g. "active" calls Model::active().')
-                    ->visible(function (Get $get){
-                        $setting_type = $get('setting_type');
-                        return $setting_type === 'model';
-                    }),
+                    ->visible(fn (Get $get) => $get('setting_type') === 'model'),
 
                 TextInput::make('category')->required()
                     ->default('General'),
