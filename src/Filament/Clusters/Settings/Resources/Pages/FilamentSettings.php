@@ -213,7 +213,8 @@ class FilamentSettings extends Page implements HasForms
             ->searchable()
             ->preload()
             ->options(function () use ($modelClass, $labelField, $valueField, $where, $scope) {
-                if (! $modelClass || ! class_exists($modelClass) || ! is_subclass_of($modelClass, Model::class)) {
+
+                if (! $modelClass || ! class_exists($modelClass) || ! is_subclass_of($modelClass, \Illuminate\Database\Eloquent\Model::class)) {
                     return [];
                 }
 
